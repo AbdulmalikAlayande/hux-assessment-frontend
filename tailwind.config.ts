@@ -7,7 +7,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				bodyColor: "#212428",
+				bodyColor: "#242424",
 				lightText: "#00df9a",
 				buttonColor: "#00df9a",
 				boxBg: "linear-gradient(145deg, #1e2024, #23272b)",
