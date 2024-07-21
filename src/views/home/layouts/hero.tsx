@@ -22,23 +22,26 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
 					"max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center"
 				}
 			>
-				<ReactTyped
-					strings={[title]}
-					typeSpeed={20}
-					backSpeed={20}
-					loop={true}
-					showCursor={false}
-					className={
-						"md:text-2xl sm:text-3xl text-2xl text-lightText font-bold p-2"
-					}
-				/>
+				<div className="flex justify-center items-center w-full md:text-2xl sm:text-3xl text-2xl text-lightText font-bold p-2">
+					<p className={"text-lightText2"}>Hux - </p>
+					<ReactTyped
+						strings={[` ${title}`]}
+						typeSpeed={20}
+						backSpeed={20}
+						loop={true}
+						showCursor={false}
+					/>
+				</div>
+
 				<h2 className={"md:text-4xl sm:text-5xl text-4xl font-bold md:py-6"}>
 					{subtitle}
 				</h2>
 				<ActionButton
 					label="Get Started Today"
 					onClick={() => navigateTo("/signup")}
-					className={"button-primary mt-4"}
+					className={
+						"button-primary bg-lightText text-bodyColor text-xl font-bold w-[200px] rounded-md my-6 mx-auto py-3 hover:bg-buttonHoverBg active:bg-buttonActiveBg"
+					}
 				/>
 			</div>
 		</div>

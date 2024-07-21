@@ -8,7 +8,7 @@ import Cta from "./layouts/cta";
 
 const LandingPage = () => {
 	return (
-		<div className="">
+		<div className="flex-col justify-between">
 			<Header title="Hux" />
 			<Hero
 				title={"Manage Your Contacts, Streamline Your Connections!"}

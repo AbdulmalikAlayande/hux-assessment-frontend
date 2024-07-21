@@ -9,6 +9,7 @@ export default {
 			colors: {
 				bodyColor: "#242424",
 				lightText: "#00df9a",
+				darkText: "#047857",
 				lightText2: "white",
 				errorText: "#ff014f",
 				successText: "#00df9a",
