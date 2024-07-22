@@ -2,6 +2,7 @@
 import Home from "./views/home/home";
 import Signup from "./views/auth/signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./views/user/dashboard/dashboard";
 
 function App() {
 	// const LazyHomePage = lazy(() => import("./views/home/home"));
@@ -13,6 +14,8 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/signup" element={<Signup />} />
+				<Route path="*" element={<div>Not Found</div>} />
+				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>
 		</BrowserRouter>
 	);

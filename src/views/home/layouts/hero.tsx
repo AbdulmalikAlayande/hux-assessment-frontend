@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
 					label="Get Started Today"
 					onClick={() => navigateTo("/signup")}
 					className={
-						"button-primary bg-lightText text-bodyColor text-xl font-bold w-[200px] rounded-md my-6 mx-auto py-3 hover:bg-buttonHoverBg active:bg-buttonActiveBg"
+						"button-primary bg-lightText text-bodyColor text-xl font-bold w-[200px] rounded-md my-6 mx-auto py-3 hover:bg-darkText active:bg-darkText"
 					}
 				/>
 			</div>
