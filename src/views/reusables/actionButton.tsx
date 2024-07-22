@@ -5,6 +5,7 @@ interface ActionButtonProps {
 	type?: "submit" | "reset" | "button" | undefined;
 	onClick?: () => void;
 	className?: string;
+	icon?: React.ReactNode;
 }
 
 const ActionButton: React.FC<ActionButtonProps> = ({
@@ -12,9 +13,11 @@ const ActionButton: React.FC<ActionButtonProps> = ({
 	onClick,
 	className,
 	type,
+	icon,
 }) => {
 	return (
 		<button className={className} onClick={onClick} type={type}>
+			{icon}
 			{label}
 		</button>
 	);
