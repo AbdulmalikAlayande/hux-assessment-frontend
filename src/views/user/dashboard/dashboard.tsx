@@ -50,8 +50,12 @@ const Dashboard: React.FC = () => {
 	return (
 		<div className="flex justify-evenly h-screen w-screen">
 			<Sidebar showMenu={showMenu} />
-			<div className={"w-full"}>
-				<div className="flex justify-between items-center px-8 py-2 text-white">
+			<div className={"w-full flex flex-col items-center justify-between"}>
+				<div
+					className={
+						"w-full flex justify-between items-center px-8 py-2 border-b-2 border-b-lightText"
+					}
+				>
 					<div className={"md:hidden"} onClick={handleMenuVisibility}>
 						{showMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
 					</div>
@@ -69,17 +73,13 @@ const Dashboard: React.FC = () => {
 						/>
 					</div>
 				</div>
-				<div className="w-full p-2">
+				<div className="w-full p-2 h-[90%] md:text-xl text-[15px] overflow-y-scroll">
 					<ul className="flex flex-col flex-grow">
 						{contactList.map((contact) => (
-							<li key={contact.id} className="py-2 px-8">
-								<div className="flex items-center">
-									<img
-										src={contact.avatar}
-										alt={contact.firstName + " " + contact.lastName}
-										className="w-10 h-10 rounded-full"
-									/>
-									<div className="flex items-center">
+							<li key={contact.id} className="w-full py-2 mt-4">
+								<div className="flex items-center justify-between">
+									<img src={contact.avatar} className="w-[20%] h-full" />
+									<div className="w-[80%] flex items-center justify-between">
 										<p>
 											{contact.firstName} {contact.lastName}
 										</p>
