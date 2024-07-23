@@ -4,12 +4,15 @@ import axios from "axios";
 import { SERVER_SIGNUP_URL } from "../../utils/constants";
 import { AiFillContacts } from "react-icons/ai";
 import ActionButton from "../reusables/actionButton";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 type SignupData = {
 	firstName: string;
 	lastName: string;
 	email: string;
 	password: string;
+	phoneNumber: string;
 };
 
 const initialData: SignupData = {
@@ -17,9 +20,11 @@ const initialData: SignupData = {
 	lastName: "",
 	email: "",
 	password: "",
+	phoneNumber: "",
 };
 const Signup: React.FC = () => {
 	const [data, setData] = useState<SignupData>(initialData);
+	const navigate = useNavigate();
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();
@@ -35,6 +40,9 @@ const Signup: React.FC = () => {
 			.match(/^\w+(-?\w+)*@\w+(-?\w+)*(\.\w{2,3})+$/);
 	};
 
+	function navigateTo(path: string) {
+		navigate(path);
+	}
 	const handleSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		if (!emailValidation()) {
@@ -44,6 +52,10 @@ const Signup: React.FC = () => {
 			.post(SERVER_SIGNUP_URL, data)
 			.then((response) => {
 				console.log("Response: ", response);
+				toast.success("Signup successful", {
+					position: "top-right",
+				});
+				navigateTo("/dashboard");
 			})
 			.catch((error) => {
 				console.error("Error message: ", error.message);
@@ -75,21 +87,30 @@ const Signup: React.FC = () => {
 							label={"First Name"}
 							onchange={handleInputChange}
 							type={"text"}
+							max={15}
+							required
 						/>
 						<AuthInput
 							label={"Last Name"}
 							onchange={handleInputChange}
 							type={"text"}
+							max={15}
+							required
 						/>
 						<AuthInput
 							label={"Email"}
 							onchange={handleInputChange}
 							type={"email"}
+							invalidMessage="Invalid email"
+							required
 						/>
 						<AuthInput
 							label={"Password"}
 							onchange={handleInputChange}
 							type={"password"}
+							invalidMessage="Password must be at least 8 chars long"
+							min={8}
+							required
 						/>
 						<ActionButton
 							className={

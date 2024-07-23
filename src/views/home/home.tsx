@@ -2,9 +2,9 @@ import React from "react";
 import Header from "./layouts/header";
 import Hero from "./layouts/hero";
 import Features from "./layouts/features";
-import Benefits from "./layouts/benefits";
-import Testimonials from "./layouts/testimonials";
-import Cta from "./layouts/cta";
+// import Benefits from "./layouts/benefits";
+// import Testimonials from "./layouts/testimonials";
+// import Cta from "./layouts/cta";
 
 const LandingPage = () => {
 	return (
@@ -17,18 +17,19 @@ const LandingPage = () => {
 				}
 			/>
 			<Features />
-			<Benefits />
+			{/* <Benefits />
 			<Testimonials />
-			<Cta />
+			<Cta /> */}
 
 			<div id="about" className="text-lightText2 my-8">
 				<div className="max-w-[800px] mx-auto text-center flex flex-col">
-					<h2>About Our Company</h2>
+					<h2 className={"text-lightText"}>About Our Company</h2>
 					<p>
-						We are dedicated to creating innovative solutions that simplify and
-						enhance your daily tasks. Our contact management system is designed
-						with you in mind, combining powerful features with an intuitive
-						interface to help you stay organized and connected.
+						We are dedicated to creating innovative solutions that
+						simplify and enhance your daily tasks. Our contact
+						management system is designed with you in mind,
+						combining powerful features with an intuitive interface
+						to help you stay organized and connected.
 					</p>
 				</div>
 			</div>

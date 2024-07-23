@@ -1,3 +1,3 @@
-export const SEVER_BASE_URL = "http://localhost:3000";
+export const SEVER_BASE_URL = "http://localhost:5000/api";
 // SERVER API URLs
-export const SERVER_SIGNUP_URL = `${SEVER_BASE_URL}/signup`;
+export const SERVER_SIGNUP_URL = `${SEVER_BASE_URL}/register`;
