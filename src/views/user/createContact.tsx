@@ -24,7 +24,9 @@ const intialData: CreateContactData = {
 const CreateContact: React.FC = () => {
 	const [data, setData] = React.useState<CreateContactData>(intialData);
 
-	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>): void {
+	function handleInputChange(
+		event: React.ChangeEvent<HTMLInputElement>
+	): void {
 		event.preventDefault();
 		setData((initSate) => ({
 			...initSate,
@@ -32,10 +34,12 @@ const CreateContact: React.FC = () => {
 		}));
 	}
 
-	function handleFormSubmission(event: React.FormEvent<HTMLFormElement>): void {
+	function handleFormSubmission(
+		event: React.FormEvent<HTMLFormElement>
+	): void {
 		event.preventDefault();
 		axios
-			.post(`${SEVER_BASE_URL}/create-contacts`, data)
+			.post(`${SEVER_BASE_URL}/create-contact`, data)
 			.then((response) => {
 				console.log("Response: ", response);
 				toast.success("Contact created successfully!");
