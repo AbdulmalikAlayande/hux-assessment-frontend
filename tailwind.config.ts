@@ -7,6 +7,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				sectionTitleSize: "50px",
 				bodyColor: "#242424",
 				lightText: "#00df9a",
 				darkText: "#047857",

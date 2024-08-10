@@ -10,6 +10,8 @@ interface AuthInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	onchange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	required?: boolean;
 	invalidMessage?: string;
+	pattern?: string;
+	name?: string;
 }
 
 const AuthInput: React.FC<AuthInputProps> = ({
@@ -22,6 +24,8 @@ const AuthInput: React.FC<AuthInputProps> = ({
 	onchange,
 	required,
 	invalidMessage,
+	pattern,
+	name,
 	...rest
 }) => {
 	const [showInvalidMessage, setShowInvalidMessage] =
@@ -56,6 +60,8 @@ const AuthInput: React.FC<AuthInputProps> = ({
 				max={max}
 				size={size}
 				required={required}
+				pattern={pattern}
+				name={name}
 			/>
 		</div>
 	);

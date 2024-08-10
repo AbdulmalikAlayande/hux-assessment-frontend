@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import AuthInput from "../reusables/authInput";
 import axios from "axios";
 import { SEVER_BASE_URL } from "../../utils/constants";
 import { toast } from "react-toastify";
+import { AuthContext } from "../reusables/authProvider";
 
 interface CreateContactData {
 	firstName: string;
@@ -23,6 +24,7 @@ const intialData: CreateContactData = {
 
 const CreateContact: React.FC = () => {
 	const [data, setData] = React.useState<CreateContactData>(intialData);
+	const { auth } = useContext(AuthContext);
 
 	function handleInputChange(
 		event: React.ChangeEvent<HTMLInputElement>
@@ -34,22 +36,33 @@ const CreateContact: React.FC = () => {
 		}));
 	}
 
-	function handleFormSubmission(
+	async function handleFormSubmission(
 		event: React.FormEvent<HTMLFormElement>
-	): void {
+	): Promise<void> {
 		event.preventDefault();
-		axios
-			.post(`${SEVER_BASE_URL}/create-contact`, data)
+		console.log("auth is: ", auth);
+		// console.log("data before send: ", data);
+		await axios
+			.post(`${SEVER_BASE_URL}/contact/create-contact`, data, {
+				headers: {
+					Authorization: `Bearer ${auth}`,
+				},
+				validateStatus: (status) => {
+					if (status >= 400) {
+						toast.error("Failed to create contact.");
+					}
+					return true;
+				},
+			})
 			.then((response) => {
 				console.log("Response: ", response);
 				toast.success("Contact created successfully!");
-				setData(intialData);
+				// setData(intialData);
 			})
 			.catch((error) => {
 				console.error("Error message: ", error.message);
-				console.error("Error code: ", error.code);
 				toast.error("Failed to create contact.");
-				setData(intialData);
+				// setData(intialData);
 			});
 	}
 
@@ -63,6 +76,7 @@ const CreateContact: React.FC = () => {
 						type={"text"}
 						onchange={handleInputChange}
 						required
+						name={"firstName"}
 						invalidMessage={"Required"}
 					/>
 					<AuthInput
@@ -70,6 +84,7 @@ const CreateContact: React.FC = () => {
 						type={"text"}
 						onchange={handleInputChange}
 						required
+						name={"lastName"}
 						invalidMessage={"Required"}
 					/>
 					<AuthInput
@@ -77,6 +92,7 @@ const CreateContact: React.FC = () => {
 						type={"email"}
 						onchange={handleInputChange}
 						required
+						name={"email"}
 						invalidMessage={"Required"}
 					/>
 					<AuthInput
@@ -84,6 +100,7 @@ const CreateContact: React.FC = () => {
 						type={"tel"}
 						onchange={handleInputChange}
 						required
+						name={"phone"}
 						invalidMessage={"Required"}
 					/>
 
